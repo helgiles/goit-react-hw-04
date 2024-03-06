@@ -1,12 +1,11 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
-/* .app {
+.page-content {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 0;
   align-items: center;
-  justify-content: center;
-} */
+}

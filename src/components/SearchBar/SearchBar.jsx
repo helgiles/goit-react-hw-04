@@ -1,7 +1,6 @@
 import css from './SearchBar.module.css';
 import { Field, Form, Formik } from 'formik';
 import toast from 'react-hot-toast';
-import * as Yup from 'yup';
 
 export default function SearchBar({ onSearch }) {
   return (

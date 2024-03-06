@@ -22,8 +22,6 @@
 }
 
 .image {
-  /* max-width: 100vh;
-  max-height: 100vh; */
   display: block;
   margin: 0 auto;
   object-fit: cover;

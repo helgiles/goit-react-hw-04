@@ -7,6 +7,7 @@ import ImageGallery from '../ImageGallery/ImageGallery';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Loader from '../Loader/Loader';
 import ImageModal from '../ImageModal/ImageModal';
+import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 
 export default function App() {
   const [query, setQuery] = useState('');
@@ -64,23 +65,25 @@ export default function App() {
   };
 
   return (
-    <div className="app">
+    <div>
       <SearchBar onSearch={handleQuery} />
-      {error && <ErrorMessage />}
-      {images.length > 0 && (
-        <ImageGallery items={images} openImageModal={openImageModal} />
-      )}
-      {loading && <Loader />}
-      {images.length > 0 && !loading && (
-        <button onClick={handleLoadMore}>Load more</button>
-      )}
-      {clikedImage && (
-        <ImageModal
-          isOpen={showImageModal}
-          onClose={closeImageModal}
-          image={clikedImage}
-        />
-      )}
+      <div className="page-content">
+        {error && <ErrorMessage />}
+        {images.length > 0 && (
+          <ImageGallery items={images} openImageModal={openImageModal} />
+        )}
+        {loading && <Loader />}
+        {images.length > 0 && !loading && (
+          <LoadMoreButton onClick={handleLoadMore} />
+        )}
+        {clikedImage && (
+          <ImageModal
+            isOpen={showImageModal}
+            onClose={closeImageModal}
+            image={clikedImage}
+          />
+        )}
+      </div>
     </div>
   );
 }
