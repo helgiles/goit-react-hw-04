@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import './App.css';
 import fetchImages from '../images-api';
 import SearchBar from '../SearchBar/SearchBar';
@@ -24,6 +24,10 @@ export default function App() {
         setLoading(true);
         setError(false);
         const data = await fetchImages(query, page);
+
+        if (data.length === 0) {
+          toast.error('Nothing found on this request');
+        }
 
         setImages(prevImages => {
           return [...prevImages, ...data];
@@ -56,7 +60,6 @@ export default function App() {
       {images.length > 0 && !loading && (
         <button onClick={handleLoadMore}>Load more</button>
       )}
-      {/* <Toaster position="bottom-center" /> */}
     </div>
   );
 }
