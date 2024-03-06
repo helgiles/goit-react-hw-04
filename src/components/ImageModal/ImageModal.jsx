@@ -1,13 +1,20 @@
+import Modal from 'react-modal';
 import css from './ImageModal.module.css';
-import ReactDOM from 'react-dom';
 
-export default function ImageModal({ imageUrl, onClose }) {
-  return ReactDOM.createPortal(
-    <div className={css.overlay} onClick={onClose}>
+Modal.setAppElement('#root');
+
+export default function ImageModal({ image, isOpen, onClose }) {
+  return (
+    <Modal className={css.overlay} isOpen={isOpen} onRequestClose={onClose}>
       <div className={css.content} onClick={event => event.stopPropagation()}>
-        <img src={imageUrl} alt="Large" className={css.image} />
+        {image && (
+          <img
+            src={image.urls.regular}
+            alt="Large image"
+            className={css.image}
+          />
+        )}
       </div>
-    </div>,
-    document.getElementById('modal-root')
+    </Modal>
   );
 }
